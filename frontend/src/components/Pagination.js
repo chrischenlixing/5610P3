@@ -37,28 +37,28 @@ function Pagination(props) {
 
     //jump to first page
     const toFirstPage = (e) => {
-        if (currPage != 1) {
+        if (currPage !== 1) {
             setCurrPage(1);
         }
     }
 
     //jump to last page
     const toLastPage = (e) => {
-        if (currPage != totalPages) {
+        if (currPage !== totalPages) {
             setCurrPage(totalPages);
         }
     }
 
     //to next page
     const toNextPage = (e) => {
-        if (currPage != totalPages) {
+        if (currPage !== totalPages) {
             setCurrPage(currPage + 1);
         }
     }
 
     //to pre page
     const toPrePage = (e) => {
-        if (currPage != 1) {
+        if (currPage !== 1) {
             setCurrPage(currPage - 1);
         }
     }
@@ -68,33 +68,33 @@ function Pagination(props) {
     }
     return (
         <div className="aot-pagination">
-            <nav aria-label={`${props.id}_pagination`}>
-                <ul className="pagination">
-                    <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Previous" onClick={toFirstPage}>
-                            <span aria-hidden="true">«</span>
-                        </a>
-                    </li>
-                    <li className="page-item" >
-                        <a className="page-link" href="#" onClick={toPrePage}>
-                            Previous
-                        </a>
-                    </li>
-                    <li className="page-number">
-                        {currPage}/{totalPages} <span>{props.totalNumber} items</span>
-                    </li>
-                    <li className="page-item">
-                        <a className="page-link" href="#" onClick={toNextPage}>
-                            Next
-                        </a>
-                    </li>
-                    <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Next" onClick={toLastPage}>
-                            <span aria-hidden="true">»</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+                <nav aria-label={`${props.id}_pagination`}>
+                    <ul className="pagination">
+                        <li className="page-item">
+                            <button className="page-link" aria-label="Previous" onClick={toFirstPage}>
+                                <span aria-hidden="true">«</span>
+                            </button>
+                        </li>
+                        <li className="page-item">
+                            <button className="page-link" onClick={toPrePage}>
+                                Previous
+                            </button>
+                        </li>
+                        <li className="page-number">
+                            {currPage}/{totalPages} <span>{props.totalNumber} items</span>
+                        </li>
+                        <li className="page-item">
+                            <button className="page-link" onClick={toNextPage}>
+                                Next
+                            </button>
+                        </li>
+                        <li className="page-item">
+                            <button className="page-link" aria-label="Next" onClick={toLastPage}>
+                                <span aria-hidden="true">»</span>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
             <div className="rows-per-page">
                 <span>
                     <label htmlFor={`${props.id}_rowsPerPage`} className="aoe-text">
@@ -106,8 +106,8 @@ function Pagination(props) {
                     className="form-select" id={`${props.id}_rowsPerPage`}>
                         <option value={5}>5</option>
                         <option value={10}>10</option>
+                        <option value={15}>15</option>
                         <option value={20}>20</option>
-                        <option value={50}>50</option>
                     </select>
                 </span>
             </div>
