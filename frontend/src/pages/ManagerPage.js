@@ -141,10 +141,10 @@ function ManagerPage() {
         let obj = {};
         let shift = document.getElementById("shift").value;
         let name = document.getElementById("name").value;
-        if (shift && shift != "") {
+        if (shift && shift !== "") {
             obj.shift = shift;
         }
-        if (name && name != "") {
+        if (name && name !== "") {
             obj.name = name;
         }
         fetch(searchURL, {

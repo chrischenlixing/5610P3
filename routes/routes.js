@@ -89,7 +89,7 @@ router.post('/api/giveReviews', async (req, res) => {
     return;
   }
   try {
-    const data = await dbFunctions.gives(req.body);
+    const data = await dbFunctions.giveReviews(req.body);
     res.json(data);
   } catch (err) {
     console.error('# Post Error', err);
