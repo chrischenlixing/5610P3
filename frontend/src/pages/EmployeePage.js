@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./EmployeePage.css";
 import Clock from "../components/Clock";
 import Pagination from "../components/Pagination";
-import Checkin from '../images/checkin.png';
+import Clockin from '../images/clockin.png';
 import View from '../images/view.png';
 import { createRoot } from "react-dom/client";
 import { Modal } from 'bootstrap'
@@ -15,7 +15,7 @@ function EmployeePage() {
     const initShiftListURL = '/api/getShiftList';
     const addShiftURL = '/api/addShift';
     const loadDataURL = '/api/getByName';
-    const checkInURL = '/api/checkin';
+    const checkInURL = '/api/clockin';
     const loadCheckInDataURL = '/api/getCheckInByName';
 
     const [tableData, setTableData] = useState([]);
@@ -130,8 +130,8 @@ function EmployeePage() {
             const root = createRoot(cell5);
             root.render(
                 <>
-                    <img src={Checkin} alt="check in" title="check in" className="operation-icon" onClick={() => checkinfunc(obj)} 
-                    tabindex="0" onKeyDown={(e)=>{if(e.key === "Enter")return checkinfunc(obj)}}/>
+                    <img src={Clockin} alt="check in" title="check in" className="operation-icon" onClick={() => clockinfunc(obj)} 
+                    tabindex="0" onKeyDown={(e)=>{if(e.key === "Enter")return clockinfunc(obj)}}/>
                     <img src={View} alt="view check in records" title="view check in records"
                         className="operation-icon" onClick={() => showCheckIn(obj)} 
                         tabindex="0" onKeyDown={(e)=>{if(e.key === "Enter")return showCheckIn(obj)}}/>
@@ -189,7 +189,7 @@ function EmployeePage() {
     }
 
     //employee check in
-    const checkinfunc = (obj) => {
+    const clockinfunc = (obj) => {
         obj.date = new Date().toDateString();
         fetch(checkInURL, {
             method: 'POST',
@@ -337,7 +337,7 @@ function EmployeePage() {
                         <div className="modal-dialog modal-dialog-scrollable aot-modal">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h1 className="modal-title fs-5" id="staticBackdropLabel">Check in records</h1>
+                                    <h1 className="modal-title fs-5" id="staticBackdropLabel">Clock in records</h1>
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
                                 </div>
                                 <div className="modal-body">

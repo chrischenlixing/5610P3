@@ -2,7 +2,7 @@ const { MongoClient } = require('mongodb');
 const dbName = 'EmoTime';
 const reviewsCollection = 'new_reviews';
 const usersCollection = 'new_users';
-const checkinCollection = 'new_checkin';
+const clockinCollection = 'new_clockin';
 const url = process.env.MOGO_URL || "mongodb://127.0.0.1:27017";
 const client = new MongoClient(url);
 
@@ -71,7 +71,7 @@ module.exports = {
   },
   getCheckInByName: async (obj) => {
     try {
-      return await db.collection(checkinCollection).find(obj).toArray();
+      return await db.collection(clockinCollection).find(obj).toArray();
     } catch (error) {
       console.error("Error in getCheckInByName:", error);
       throw error; 
@@ -87,7 +87,7 @@ module.exports = {
   },
   addCheckIn: async (item) => {
     try {
-      return await db.collection(checkinCollection).insertOne(item);
+      return await db.collection(clockinCollection).insertOne(item);
     } catch (error) {
       console.error("Error in addCheckIn:", error);
       throw error; 
@@ -95,7 +95,7 @@ module.exports = {
   },
   findOneCheckIn: async (item) => {
     try {
-      return await db.collection(checkinCollection).findOne({ shift: item.shift, name: item.name, date: item.date });
+      return await db.collection(clockinCollection).findOne({ shift: item.shift, name: item.name, date: item.date });
     } catch (error) {
       console.error("Error in findOneCheckIn:", error);
       throw error; 

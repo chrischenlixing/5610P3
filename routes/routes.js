@@ -111,7 +111,7 @@ router.get('/api/getByName', async (req, res) => {
   }
 });
 
-router.post('/api/checkin', async (req, res) => {
+router.post('/api/clockin', async (req, res) => {
   if (!req.session.login||!isEmployee(req)) {
     res.redirect(loginRedirect);
     return;
