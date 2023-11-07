@@ -1,0 +1,22 @@
+.clock {
+    padding-inline: 20px;
+}
+
+.calendar {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    display: inline-block;
+}
+
+.calendar-date {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.clock-time {
+    font-size: 24px;
+}
