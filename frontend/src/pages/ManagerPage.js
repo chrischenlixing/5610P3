@@ -270,10 +270,10 @@ function ManagerPage() {
         //     alert("invalid input");
         //     return;
         // }
-        // if (typeof obj.reviews == 'number' || Number.isFinite(obj.reviews)) {
-        //     alert("invalid input");
-        //     return;
-        // }
+        if (typeof obj.reviews == 'number' || Number.isFinite(obj.reviews)) {
+            alert("invalid input");
+            return;
+        }
         
         fetch(reviewingURL, {
             method: 'POST',
