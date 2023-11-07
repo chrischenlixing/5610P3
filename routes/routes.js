@@ -1,8 +1,7 @@
 const express = require('express');
-const myDB = require('mongodb');
 
 const router = express.Router();
-const dbFunctions = require('../db/dbFunctions');
+const myDB = require('../db/myDB');
 const {genPassword} =require('./encryption');
 
 const loginRedirect="/?msg=login needed";
@@ -17,7 +16,7 @@ router.get('/api/allReviews', async (req, res) => {
     return;
   }
   try {
-    const docs = await dbFunctions.getAllReviews();
+    const docs = await myDB.getAllReviews();
     res.json(docs);
   } catch (err) {
     console.error('# Get Error', err);
@@ -28,7 +27,7 @@ router.get('/api/allReviews', async (req, res) => {
 router.post('/api/login', async (req, res) => {
   let data = req.body;
 
-  let user = await dbFunctions.findUser(data.username);
+  let user = await myDB.findUser(data.username);
   if (user) {
     if (user.password == genPassword(data.password)) {
       req.session.user = user;
@@ -50,11 +49,11 @@ router.post('/api/register', async (req, res) => {
   let data = req.body;
   //console.log("register:"+data);
   try {
-    if (await dbFunctions.findUser(data.username)) {
+    if (await myDB.findUser(data.username)) {
       res.redirect("/register?msg=user already exist");
     } else {
       data.password=genPassword(data.password);
-      await dbFunctions.addUser(data);
+      await myDB.addUser(data);
       res.redirect("/?msg=register succeed");
     }
   } catch (err) {
@@ -70,12 +69,12 @@ router.post('/api/addShift', async (req, res) => {
   }
   let data={shift:req.body.shift,name:req.session.user.username};
   try {
-    let item=await dbFunctions.findOneShift(data);
+    let item=await myDB.findOneShift(data);
     if(item){
       res.json({message: 'shift already exist'});
       return;
     }
-    data = await dbFunctions.addShift(data);
+    data = await myDB.addShift(data);
     res.json(data);
   } catch (err) {
     console.error('# Post Error', err);
@@ -89,7 +88,7 @@ router.post('/api/giveReviews', async (req, res) => {
     return;
   }
   try {
-    const data = await dbFunctions.giveReviews(req.body);
+    const data = await myDB.giveReviews(req.body);
     res.json(data);
   } catch (err) {
     console.error('# Post Error', err);
@@ -103,8 +102,8 @@ router.get('/api/getByName', async (req, res) => {
     return;
   }
   try {
-    const docs = await dbFunctions.findByName(req.session.user.username);
-    // const docs = await dbFunctions.findByName('employee1');
+    const docs = await myDB.findByName(req.session.user.username);
+    // const docs = await myDB.findByName('employee1');
     res.json(docs);
   } catch (err) {
     console.error('# Get Error', err);
@@ -121,10 +120,10 @@ router.post('/api/checkin', async (req, res) => {
     let data=req.body;
     data.name=req.session.user.username;
     // data.name='employee1';
-    if(await dbFunctions.findOneCheckIn(data)){
+    if(await myDB.findOneCheckIn(data)){
       return;
     }
-    const docs = await dbFunctions.addCheckIn(data);
+    const docs = await myDB.addCheckIn(data);
     res.json(docs);
   } catch (err) {
     console.error('# Get Error', err);
@@ -138,7 +137,7 @@ router.post('/api/getCheckInByName', async (req, res) => {
     return;
   }
   try {
-    const docs = await dbFunctions.getCheckInByName(req.body);
+    const docs = await myDB.getCheckInByName(req.body);
     res.json(docs);
   } catch (err) {
     console.error('# Get Error', err);
@@ -159,7 +158,7 @@ router.post('/api/search',async (req, res) => {
   }
 
   try {
-    const docs = await dbFunctions.searchReviews(req.body);
+    const docs = await myDB.searchReviews(req.body);
     res.json(docs);
   } catch (err) {
     console.error('# Get Error', err);
