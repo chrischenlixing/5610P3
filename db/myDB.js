@@ -45,6 +45,15 @@ module.exports = {
     }
   },
 
+  deleteOneShift: async (item) => {
+    try {
+      return await db.collection(reviewsCollection).deleteOne({ shift: item.shift, name: item.name });
+    } catch (error) {
+      console.error("Error in deleteOneShift:", error);
+      throw error; 
+    }
+  },
+
   findUser: async (name) => {
     try {
       return await db.collection(usersCollection).findOne({ username: name });

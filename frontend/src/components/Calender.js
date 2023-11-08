@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
+import PropTypes from 'prop-types';
 import "./Calender.css";
 
 function Calender(props) {
@@ -28,5 +29,9 @@ function Calender(props) {
         </div>
     );
 }
+
+Calender.propTypes = {
+    format: PropTypes.string
+};
 
 export default Calender;

@@ -118,6 +118,9 @@ function ManagerPage() {
             tabIndex="0" onKeyDown={(e) => { if (e.key === "Enter") return showReviewing(obj) }}>
             Review
             </button>
+            <button className="operation-button" onClick={() => handleDeleteShift(obj)}>
+                        Delete
+                    </button>
         </>
 )
 
@@ -237,6 +240,25 @@ function ManagerPage() {
 
     }, [modalTableData, modalRowsPerPage, modalCurrentPage])
 
+    const handleDeleteShift = (shiftObj) => {
+        fetch('/api/deleteOneShift', { 
+            method: 'POST',
+            body: JSON.stringify(shiftObj),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                alert(data.message);
+                loadData(); 
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    };
 
     //show reviewing table
     const showReviewing = (obj) => {

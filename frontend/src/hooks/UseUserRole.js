@@ -1,26 +1,32 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from 'react';
 
-export function useUserRole() {
-  const [userRole, setUserRole] = useState(null);
+export const useUserRole = () => {
+  const [role, setRole] = useState(null);
 
   useEffect(() => {
-    // Make an API request to fetch the user's role from your server
-    fetch("/api/userRole")
-      .then((response) => {
-        if (response.ok) {
-            console.log("Response from the server:", response); 
-          return response.json();
+    const fetchRole = async () => {
+      try {
+        const response = await fetch('/api/userRole', {
+          credentials: 'include', // to ensure cookies are sent
+        });
+        const contentType = response.headers.get('content-type');
+
+        if (response.ok && contentType && contentType.includes('application/json')) {
+          const data = await response.json();
+          setRole(data.role);
         } else {
-          throw new Error("Failed to fetch user role");
+          // If the content type is not JSON, handle the scenario appropriately
+          console.error('Expected JSON response, received:', contentType);
+          setRole(null);
         }
-      })
-      .then((data) => {
-        setUserRole(data.role); // Set the user's role
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      } catch (error) {
+        console.error('Failed to fetch user role:', error);
+        setRole(null);
+      }
+    };
+
+    fetchRole();
   }, []);
 
-  return userRole;
-}
+  return role;
+};

@@ -10,6 +10,7 @@ const { shiftList } = require('../data/shiftList');
 const loginRedirect = '/?msg=login needed';
 
 
+
 function isEmployee(req) {
   return req.session.user.position === 'employee';
 }
@@ -17,6 +18,17 @@ function isEmployee(req) {
 function isManager(req) {
   return req.session.user.position === 'manager';
 }
+
+router.get('/api/userRole', (req, res) => {
+  console.log('/api/userRole hit'); // Log when the route is hit
+  if (req.session.user) {
+    console.log('User is in session:', req.session.user);
+    res.json({ role: req.session.user.position });
+  } else {
+    console.log('User not logged in');
+    res.status(401).json({ error: 'User is not logged in' });
+  }
+});
 
 
 router.get('/api/allReviews', async (req, res) => {
@@ -88,6 +100,25 @@ router.post('/api/addShift', async (req, res) => {
     res.json(result);
   } catch (err) {
     console.error('# Post Error', err);
+    res.status(500).send({ error: `${err.name}, ${err.message}` });
+  }
+});
+
+router.post('/api/deleteOneShift', async (req, res) => {
+  if (!req.session.login || !isEmployee(req)) {
+    return res.redirect(loginRedirect);  
+  }
+
+  const data = { shift: req.body.shift, name: req.session.user.username };
+
+  try {
+    const result = await myDB.deleteOneShift(data);
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ message: 'Shift not found or already deleted.' });
+    }
+    res.json({ message: 'Shift successfully deleted.' });
+  } catch (err) {
+    console.error('# Post Error in deleteOneShift', err);
     res.status(500).send({ error: `${err.name}, ${err.message}` });
   }
 });

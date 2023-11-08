@@ -30,6 +30,7 @@ function EmployeePage() {
 
     const navigate = useNavigate();
 
+
     //log out
     const handleLogout = (e) => {
         fetch(logoutURL).then(
@@ -140,6 +141,10 @@ function EmployeePage() {
                   tabIndex="0" onKeyDown={(e) => { if (e.key === "Enter") return showCheckIn(obj) }}>
                   View
                 </button>
+                <button className="operation-button" onClick={() => handleDeleteShift(obj)}>
+                        Delete
+                    </button>
+                
               </>
             )
 
@@ -182,6 +187,26 @@ function EmployeePage() {
                 console.error(error);
             })
         }
+    };
+
+    const handleDeleteShift = (shiftObj) => {
+        fetch('/api/deleteOneShift', { 
+            method: 'POST',
+            body: JSON.stringify(shiftObj),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                alert(data.message);
+                loadData(); 
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     };
 
     const onPageChange = (currPage) => {
