@@ -99,9 +99,7 @@ function ManagerPage() {
                 cell4.innerHTML = tableData[i].reviews;
             }
 
-            if (tableData[i].reviews) {
-                cell4.innerHTML = tableData[i].reviews;
-            }
+
             let obj = {
                 "shift": tableData[i].shift,
                 "name": tableData[i].name
@@ -119,8 +117,8 @@ function ManagerPage() {
             Review
             </button>
             <button className="operation-button" onClick={() => handleDeleteShift(obj)}>
-                        Delete
-                    </button>
+            Delete
+            </button>
         </>
 )
 
@@ -418,10 +416,10 @@ function ManagerPage() {
                                 <div className="modal-body">
                                     <div className="reviewing-label">
                                         <label className="aoe-text" id="reviewingShift">
-                                            shift:
+                                            Shift:
                                         </label>
                                         <label className="aoe-text" id="reviewingName">
-                                            name:
+                                            Name:
                                         </label>
                                     </div>
                                     <div className="form-group reviewing-inputgroup">
