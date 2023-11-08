@@ -50,7 +50,7 @@ function Pagination(props) {
     }
 
     //to next page
-    const toNextPage = (e) => {
+    const toNextPage = (e) => { 
         if (currPage !== totalPages) {
             setCurrPage(currPage + 1);
         }
@@ -58,7 +58,7 @@ function Pagination(props) {
 
     //to pre page
     const toPrePage = (e) => {
-        if (currPage !== 1) {
+        if (currPage !==1) {
             setCurrPage(currPage - 1);
         }
     }
