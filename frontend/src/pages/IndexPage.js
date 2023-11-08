@@ -134,61 +134,57 @@ function IndexPage() {
 
   return (
     <div className="gradient-custom-3" style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-      <nav>
-        {/* <a href="/" id="LogoutAction">
-          Back
-        </a> */}
-      </nav>
       <header>
-        <h1 className="text-uppercase text-center mb-5 aoe-text">Login</h1>
+        <h1 className="register-login-title">Login</h1>
       </header>
       <main>
         <div className="container">
           <div id="login-row" className="row justify-content-center align-items-center">
             <div id="login-column" className="col-md-6">
               <div id="login-box" className="col-md-12">
-                <form
-                  id="login-form"
-                  className="form px-5"
-                  action="/"
-                  method="post"
-                  onSubmit={handleSubmit}
-                >
-                  <div className="form-group mb-4">
-                    <label htmlFor="username" className="aoe-text">
-                      Username:
-                    </label>
-                    <input
-                      type="text"
-                      name="username"
-                      id="username"
-                      className="form-control"
-                    />
+                {/* Card-like structure for the login form */}
+                <div className="card">
+                  <div className="card-body">
+                    <form
+                      id="login-form"
+                      className="form px-5"
+                      action="/"
+                      method="post"
+                      onSubmit={handleSubmit}
+                    >
+                      <div className="form-group mb-4">
+                        <label htmlFor="username" className="aoe-text">
+                          Username:
+                        </label>
+                        <input
+                          type="text"
+                          name="username"
+                          id="username"
+                          className="form-control"
+                        />
+                      </div>
+                      <div className="form-group mb-4">
+                        <label htmlFor="password" className="aoe-text">
+                          Password:
+                        </label>
+                        <input
+                          type="password"
+                          name="password"
+                          id="password"
+                          className="form-control"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <button type="submit" className="btn btn-info btn-lg aoe-btn-submit">Submit</button>
+                      </div>
+                    </form>
+                    <div id="register-link" className="text-right">
+                      <a href="/register" className="aoe-text">
+                        Register here
+                      </a>
+                    </div>
                   </div>
-                  <div className="form-group mb-4">
-                    <label htmlFor="password" className="aoe-text">
-                      Password:
-                    </label>
-                    <input
-                      type="password"
-                      name="password"
-                      id="password"
-                      className="form-control"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="submit"
-                      className="btn btn-info btn-lg aoe-btn-submit"
-                      value="Submit"
-                    />
-                  </div>
-                  <div id="register-link" className="text-right">
-                    <a href="/register" className="aoe-text">
-                      Register here
-                    </a>
-                  </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>
@@ -201,3 +197,4 @@ function IndexPage() {
 IndexPage.propTypes = {};
 
 export default IndexPage;
+

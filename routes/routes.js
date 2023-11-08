@@ -58,7 +58,7 @@ router.post('/api/register', async (req, res) => {
 
   try {
     if (await myDB.findUser(data.username)) {
-      return res.redirect('/register?msg=user already exist');
+      return res.redirect('/register?msg=user is already registered, please log in.');
     }
 
     const hashedPassword = await bcrypt.hash(data.password, 10);
@@ -81,7 +81,7 @@ router.post('/api/addShift', async (req, res) => {
   try {
     const item = await myDB.findOneShift(data);
     if (item) {
-      return res.json({ message: 'shift already exists' });
+      return res.json({ message: 'This date is already selected, please choose another one.' });
     }
 
     const result = await myDB.addShift(data);

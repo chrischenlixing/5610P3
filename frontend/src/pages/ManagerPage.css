@@ -22,3 +22,14 @@
     padding-right: 10px;
 }
 
+
+body {
+    background: #FFB6C1; /* Pink background color */
+    background: -webkit-linear-gradient(to right, rgba(255, 182, 193, 0.5), rgba(255, 182, 193, 0.5));
+    background: linear-gradient(to right, rgba(255, 182, 193, 0.5), rgba(255, 182, 193, 0.5));
+    margin: 0; /* Remove default body margin */
+    padding: 0; /* Remove default body padding */
+    height: 100vh; /* Set the body height to cover the entire viewport height */
+    overflow: hidden; /* Hide horizontal scrollbar if any */
+  }
+  

@@ -122,6 +122,9 @@ function EmployeePage() {
             if (tableData[i].reviews) {
                 cell4.innerHTML = tableData[i].reviews;
             }
+            else{
+                cell4.innerHTML = "<span class='text-muted'>Waiting for Manager's Review</span>";
+            }
             let obj = {
                 "shift": tableData[i].shift,
                 "name": tableData[i].name
@@ -288,14 +291,15 @@ function EmployeePage() {
     const userRole = useUserRole(); 
     return (
         <>
-            <NavBar />
+            <NavBar></NavBar>
   
-            <header>
-                <h1 className="centering">
-                    <span id="h1-symbol">❙&nbsp;</span>Employee Page
+
+            <main className="body">
+                <div class="container">
+                <h1 >
+                    <span id="h1-symbol"></span>Employee
                 </h1>
-            </header>
-            <main>
+            
                 <form
                     id="registerShift-form"
                     className="form-inline aot-form"
@@ -305,7 +309,7 @@ function EmployeePage() {
                 >
                     <div className="form-group">
                         <label htmlFor="shiftList" className="aoe-text">
-                            Add Shift:
+                            Select Shift Date:
                         </label>
                         <select className="form-select" name="shiftList" id="shiftList">
                         </select>
@@ -316,6 +320,7 @@ function EmployeePage() {
                         </div>
                     </div>
                 </form>
+                </div>
                 <table className="table aot-table table-striped" id="reviewsTable">
                     <thead>
                         <tr>

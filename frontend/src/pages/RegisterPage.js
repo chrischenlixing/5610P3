@@ -121,7 +121,7 @@
 
 import React, { useEffect } from "react";
 import UseCheckMsg from "../hooks/UseCheckMsg";
-// import { BiArrowLeftSquareFill } from 'react-icons/bi';
+import { Link } from "react-router-dom"; // Import the Link component
 
 function RegisterPage() {
   const registerURL = '/api/register/';
@@ -158,20 +158,9 @@ function RegisterPage() {
 
   return (
     <div className="gradient-custom-3" style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-      {/* <nav> */}
-      {/* <i class="bi bi-arrow-left-square-fill"><a href="/" id="LogoutAction">
-          back
-        </a></i> */}
-      {/* </nav> */}
-      {/* <nav className="navbar">
-      <h1 className="navbar-title">EmoTime</h1>
-        </nav> */}
-      {/* <div>
-      <BiArrowLeftSquareFill />
-      <a href="/" id="LogoutAction">back</a>
-    </div> */}
       <header>
-        <h1 className="text-uppercase text-center mb-5 aoe-text">Create an account</h1>
+        {/* <h1 className="text-uppercase text-center mb-5 aoe-text">Create an account</h1> */}
+        <h1 className="register-login-title">Create an account</h1>
       </header>
       <main>
         <div className="container">
@@ -185,43 +174,45 @@ function RegisterPage() {
                   method="post"
                   onSubmit={handleSubmit}
                 >
-                  <div className="form-group mb-4">
-                    <label htmlFor="username" className="aoe-text">
-                      Username:
-                    </label>
-                    <input
-                      type="text"
-                      name="username"
-                      id="username"
-                      className="form-control"
-                    />
-                  </div>
-                  <div className="form-group mb-4">
-                    <label htmlFor="password" className="aoe-text">
-                      Password:
-                    </label>
-                    <input
-                      type="password"
-                      name="password"
-                      id="password"
-                      className="form-control"
-                    />
-                  </div>
-                  <div className="form-group mb-4">
-                    <label htmlFor="position" className="aoe-text">
-                      Position:
-                    </label>
-                    <select className="form-select" name="position" id="position">
-                      <option value="manager">Manager</option>
-                      <option value="employee">Employee</option>
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="submit"
-                      className="btn btn-info btn-lg aoe-btn-submit"
-                      value="Register"
-                    />
+                  <div className="card">
+                    <div className="card-body">
+                      <div className="form-group mb-4">
+                        <label htmlFor="username" className="aoe-text">
+                          Username:
+                        </label>
+                        <input
+                          type="text"
+                          name="username"
+                          id="username"
+                          className="form-control"
+                        />
+                      </div>
+                      <div className="form-group mb-4">
+                        <label htmlFor="password" className="aoe-text">
+                          Password:
+                        </label>
+                        <input
+                          type="password"
+                          name="password"
+                          id="password"
+                          className="form-control"
+                        />
+                      </div>
+                      <div className="form-group mb-4">
+                        <label htmlFor="position" className="aoe-text">
+                          Position:
+                        </label>
+                        <select className="form-select" name="position" id="position">
+                          <option value="manager">Manager</option>
+                          <option value="employee">Employee</option>
+                        </select>
+                      </div>
+                      <div className="form-group">
+                        <button type="submit" className="btn btn-info btn-lg aoe-btn-submit">Register</button>
+                        {/* Cancel button with Link */}
+                        <Link to="/" className="btn aoe-btn-cancel btn-lg ml-2">Cancel</Link>
+                      </div>
+                    </div>
                   </div>
                 </form>
               </div>
