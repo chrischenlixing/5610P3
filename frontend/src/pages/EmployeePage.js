@@ -2,12 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import UseCheckMsg from "../hooks/UseCheckMsg";
 import { useNavigate } from "react-router-dom";
 import "./EmployeePage.css";
-import Clock from "../components/Clock";
 import Pagination from "../components/Pagination";
-import Clockin from '../images/clockin.png';
-import View from '../images/view.png';
+import NavBar from "../components/NavBar";
 import { createRoot } from "react-dom/client";
 import { Modal } from 'bootstrap'
+import { useUserRole } from '../hooks/UseUserRole';
 
 function EmployeePage() {
 
@@ -130,12 +129,15 @@ function EmployeePage() {
             const root = createRoot(cell5);
             root.render(
                 <>
-                    <img src={Clockin} alt="check in" title="check in" className="operation-icon" onClick={() => clockinfunc(obj)} 
-                    tabindex="0" onKeyDown={(e)=>{if(e.key === "Enter")return clockinfunc(obj)}}/>
-                    <img src={View} alt="view check in records" title="view check in records"
-                        className="operation-icon" onClick={() => showCheckIn(obj)} 
-                        tabindex="0" onKeyDown={(e)=>{if(e.key === "Enter")return showCheckIn(obj)}}/>
-                </>
+                <button className="operation-button" onClick={() => clockinfunc(obj)} 
+                  tabIndex="0" onKeyDown={(e) => { if (e.key === "Enter") return clockinfunc(obj) }}>
+                  Clockin
+                </button>
+                <button className="operation-button" onClick={() => showCheckIn(obj)} 
+                  tabIndex="0" onKeyDown={(e) => { if (e.key === "Enter") return showCheckIn(obj) }}>
+                  View
+                </button>
+              </>
             )
 
         }
@@ -283,16 +285,11 @@ function EmployeePage() {
 
     }, [modalTableData, modalRowsPerPage, modalCurrentPage])
 
+    const userRole = useUserRole(); 
     return (
         <>
-            <nav aria-label="log out">
-                <div className="aot-head">
-                    <a className="logout" id="LogoutAction" onClick={handleLogout} href="/">
-                        Logout
-                    </a>
-                    <Clock></Clock>
-                </div>
-            </nav>
+            <NavBar />
+  
             <header>
                 <h1 className="centering">
                     <span id="h1-symbol">❙&nbsp;</span>Employee Page
@@ -323,10 +320,10 @@ function EmployeePage() {
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">name</th>
-                            <th scope="col">shift</th>
-                            <th scope="col">review</th>
-                            <th scope="col">operation</th>
+                            <th scope="col">Employee Name</th>
+                            <th scope="col">Shifts</th>
+                            <th scope="col">Reviews</th>
+                            <th scope="col">Functions</th>
                         </tr>
                     </thead>
                     <tbody ref={table}></tbody>
@@ -337,7 +334,7 @@ function EmployeePage() {
                         <div className="modal-dialog modal-dialog-scrollable aot-modal">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h1 className="modal-title fs-5" id="staticBackdropLabel">Clock in records</h1>
+                                    <h1 className="modal-title fs-5" id="staticBackdropLabel">Clockin records</h1>
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
                                 </div>
                                 <div className="modal-body">
@@ -345,9 +342,9 @@ function EmployeePage() {
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">name</th>
-                                                <th scope="col">shift</th>
-                                                <th scope="col">date</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Shifts</th>
+                                                <th scope="col">Date</th>
                                             </tr>
                                         </thead>
                                         <tbody ref={modalTable}></tbody>

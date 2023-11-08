@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./Clock.css";
 
-function Clock(props) {
+import React, { useState, useEffect, useRef } from "react";
+import "./Calender.css";
+
+function Calender(props) {
     const [date, setDate] = useState(new Date());
     const timerID = useRef(null);
 
@@ -11,7 +12,7 @@ function Clock(props) {
     }, []);
 
     const tick = () => {
-        setDate(() => new Date());
+        setDate(new Date());
     };
 
     return (
@@ -28,4 +29,4 @@ function Clock(props) {
     );
 }
 
-export default Clock;
+export default Calender;

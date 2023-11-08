@@ -2,12 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import UseCheckMsg from "../hooks/UseCheckMsg";
 import { useNavigate } from "react-router-dom";
 import "./ManagerPage.css";
-import Clock from "../components/Clock";
-import View from '../images/view.png';
-import Reviewing from '../images/edit.png';
 import Pagination from '../components/Pagination';
+import Navbar from '../components/NavBar';
 import { createRoot } from "react-dom/client";
-import { Modal } from 'bootstrap'
+import { Modal } from 'bootstrap';
+
 
 function ManagerPage() {
 
@@ -77,10 +76,7 @@ function ManagerPage() {
     }, []);
 
     useEffect(() => {
-        // console.log(table.current);
-        // console.log(table.current.hasChildNodes());
         table.current.innerHTML = "";
-        // console.log("df:" + rowsPerPage);
 
         let start = rowsPerPage * (currentPage - 1);
 
@@ -111,14 +107,19 @@ function ManagerPage() {
                 "name": tableData[i].name
             };
             const root = createRoot(cell5);
-            root.render(
-                <>
-                    <img src={View} tabindex="0" alt="view check in records" title="view check in records"
-                        className="operation-icon" onClick={() => showCheckIn(obj)} onKeyDown={(e)=>{if(e.key === "Enter")return showCheckIn(obj)}}/>
-                    <img src={Reviewing} tabindex="0" alt="Reviewing" title="Reviewing" className="operation-icon"
-                        onClick={() => showReviewing(obj)} onKeyDown={(e)=>{if(e.key === "Enter")return showReviewing(obj)}}/>
-                </>
-            )
+
+        root.render(
+        <>
+            <button className="operation-button" onClick={() => showCheckIn(obj)} 
+            tabIndex="0" onKeyDown={(e) => { if (e.key === "Enter") return showCheckIn(obj) }}>
+            View
+            </button>
+            <button className="operation-button" onClick={() => showReviewing(obj)} 
+            tabIndex="0" onKeyDown={(e) => { if (e.key === "Enter") return showReviewing(obj) }}>
+            Review
+            </button>
+        </>
+)
 
         }
 
@@ -129,7 +130,6 @@ function ManagerPage() {
         return;
     }
     const onRowPerPageChange = (rowPerPage) => {
-        // console.log("rowPerPage:" + rowPerPage);
         setRowsPerPage(rowPerPage);
     }
 
@@ -299,17 +299,11 @@ function ManagerPage() {
 
     return (
         <>
-            <nav aria-label="log out">
-                <div className="aot-head">
-                    <a className="logout" id="LogoutAction" onClick={handleLogout} href="/">
-                        Logout
-                    </a>
-                    <Clock></Clock>
-                </div>
-            </nav>
+            <Navbar></Navbar>
+
             <header>
                 <h1 className="centering">
-                    <span id="h1-symbol">❙&nbsp;</span>Manager Page
+                    <span id="h1-symbol"></span>Manager
                 </h1>
             </header>
             <main>
@@ -353,10 +347,10 @@ function ManagerPage() {
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">name</th>
-                            <th scope="col">shift</th>
-                            <th scope="col">review</th>
-                            <th scope="col">operation</th>
+                            <th scope="col">Employee Name</th>
+                            <th scope="col">Shifts</th>
+                            <th scope="col">Review</th>
+                            <th scope="col">Functions</th>
                         </tr>
                     </thead>
                     <tbody ref={table}></tbody>
@@ -367,7 +361,7 @@ function ManagerPage() {
                         <div className="modal-dialog modal-dialog-scrollable aot-modal">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h1 className="modal-title fs-5" id="staticBackdropLabel">Clock in records</h1>
+                                    <h1 className="modal-title fs-5" id="staticBackdropLabel">Calender in records</h1>
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
                                 </div>
                                 <div className="modal-body">
