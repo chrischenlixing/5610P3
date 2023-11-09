@@ -7,8 +7,8 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const url = process.env.MONGODB_URI;
-const client = new MongoClient(url);
+const url = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017";
+const client = new MongoClient(url, { useUnifiedTopology: true}, { useNewUrlParser: true }, { connectTimeoutMS: 30000 }, { keepAlive: 1});
 const db = client.db(dbName);
 
 module.exports = {
