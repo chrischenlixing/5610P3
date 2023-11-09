@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './MyCalender.css'; // Import your CSS file
+import './MyCalendar.css'; // Import your CSS file
 
 import Calendar from 'react-calendar';
 
@@ -9,7 +9,7 @@ function MyCalendar(props) {
 
   return (
     <div className='app'>
-      <h3 className='text-center'>Calender</h3>
+      <h3 className='text-center'>Calendar</h3>
       <div className='calendar-container'>
         <Calendar onChange={setDate} value={date} />
       </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Calendar from './MyCalender';
+import Calendar from './MyCalendar';
 import './NavBar.css';
 import { useUserRole } from '../hooks/UseUserRole';
 import { Modal } from 'react-bootstrap';
@@ -37,7 +37,7 @@ function NavBar({ handleLogout }) {
           <Modal.Title>Calendar</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Calendar />
+          <Calendar></Calendar>
         </Modal.Body>
         <Modal.Footer>
           <button onClick={closeModal}>Close</button>
