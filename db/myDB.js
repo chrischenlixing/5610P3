@@ -3,8 +3,11 @@ const dbName = 'EmoTime';
 const reviewsCollection = 'new_reviews';
 const usersCollection = 'new_users';
 const clockinCollection = 'new_clockin';
-const url = process.env.MOGO_URL || "mongodb://127.0.0.1:27017";
+const url = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017";
 const client = new MongoClient(url);
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const db = client.db(dbName);
 
