@@ -7,6 +7,8 @@ import NavBar from "../components/NavBar";
 import { createRoot } from "react-dom/client";
 import { Modal } from 'bootstrap'
 import { useUserRole } from '../hooks/UseUserRole';
+import MyCalendar from "../components/MyCalender";
+
 
 function EmployeePage() {
 
@@ -321,7 +323,7 @@ function EmployeePage() {
 
             <main className="body">
                 <div class="container">
-                <h1 >
+                <h1 className="centering">
                     <span id="h1-symbol"></span>Employee
                 </h1>
             
@@ -387,10 +389,15 @@ function EmployeePage() {
                             </div>
                         </div>
                     </div>
+
+    
                 </div>
+
+                
             </main>
 
         </>
+
 
     );
 }

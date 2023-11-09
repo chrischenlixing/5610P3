@@ -74,6 +74,7 @@ function IndexPage() {
                           name="password"
                           id="password"
                           className="form-control"
+                          placeholder="Enter your password"
                         />
                       </div>
                       <div className="form-group">

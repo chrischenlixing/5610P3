@@ -20,7 +20,7 @@ function isManager(req) {
 }
 
 router.get('/api/userRole', (req, res) => {
-  console.log('/api/userRole hit'); // Log when the route is hit
+  console.log('/api/userRole hit'); 
   if (req.session.user) {
     console.log('User is in session:', req.session.user);
     res.json({ role: req.session.user.position });
@@ -58,7 +58,7 @@ router.post('/api/login', async (req, res) => {
       const redirectPath = user.position === 'manager' ? '/manager' : '/employee';
       res.redirect(redirectPath);
     } else {
-      res.redirect('/?msg=wrong password');
+      res.redirect('/?msg=Your opassword is incorrect, please reenter');
     }
   } else {
     res.redirect('/?msg=user not exists');

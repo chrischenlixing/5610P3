@@ -27,6 +27,7 @@
   "devDependencies": {
     "eslint": "^8.25.0",
     "eslint-plugin-react": "^7.31.11",
-    "prettier": "2.7.1"
+    "prettier": "2.7.1",
+    "react-calendar": "^4.6.1"
   }
 }

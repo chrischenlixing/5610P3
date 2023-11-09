@@ -52,3 +52,12 @@ body {
     margin: 20px;
     width: -webkit-fill-available !important;
 }
+
+#reviewsTable {
+    max-width: 50%; /* You can adjust the percentage to your desired width */
+    margin: 0 auto; /* This will horizontally center the table */
+  }
+
+  .h1-symbol{
+    text-align:center;
+  }
