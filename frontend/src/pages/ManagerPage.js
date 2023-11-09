@@ -1,6 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from "react";
 import UseCheckMsg from "../hooks/UseCheckMsg";
-import { useNavigate } from "react-router-dom";
 import "./ManagerPage.css";
 import Pagination from '../components/Pagination';
 import Navbar from '../components/NavBar';
@@ -10,7 +10,6 @@ import { Modal } from 'bootstrap';
 
 function ManagerPage() {
 
-    const logoutURL = '/api/logout';
     const loadDataURL = '/api/allReviews';
     const searchURL = '/api/search';
     const loadCheckInDataURL = '/api/getCheckInByName';
@@ -29,24 +28,10 @@ function ManagerPage() {
     const modalTable = useRef(null);
     const reviewingTable = useRef(null);
 
-    const navigate = useNavigate();
 
-    //logout
-    const handleLogout = (e) => {
-        console.log("fdf");
-        fetch(logoutURL).then(
-            (res) => {
-                if (res.ok) {
-                    navigate("/");
-                }
-            }
-        )
-        e.preventDefault()
-    }
 
     UseCheckMsg();
 
-    //load data int to table
     const loadData = () => {
         fetch(loadDataURL).then(
             (res) => {
@@ -60,7 +45,6 @@ function ManagerPage() {
             }
         ).then(
             (data) => {
-                // console.log(data);
                 setTableData(() => data);
                 setTotalNumber(data.length);
             }

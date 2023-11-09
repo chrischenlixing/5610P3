@@ -1,17 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useState, useEffect, useRef } from "react";
 import UseCheckMsg from "../hooks/UseCheckMsg";
-import { useNavigate } from "react-router-dom";
 import "./EmployeePage.css";
 import Pagination from "../components/Pagination";
 import NavBar from "../components/NavBar";
 import { createRoot } from "react-dom/client";
 import { Modal } from 'bootstrap'
-import { useUserRole } from '../hooks/UseUserRole';
 
 
 function EmployeePage() {
 
-    const logoutURL = '/api/logout';
     const initShiftListURL = '/api/getShiftList';
     const addShiftURL = '/api/addShift';
     const loadDataURL = '/api/getByName';
@@ -29,20 +28,7 @@ function EmployeePage() {
     const table = useRef(null);
     const modalTable = useRef(null);
 
-    const navigate = useNavigate();
 
-
-    //log out
-    const handleLogout = (e) => {
-        fetch(logoutURL).then(
-            (res) => {
-                if (res.ok) {
-                    navigate("/");
-                }
-            }
-        )
-        e.preventDefault();
-    }
 
     //init shift select list
     const initShiftList = () => {
@@ -312,7 +298,6 @@ function EmployeePage() {
 
     }, [modalTableData, modalRowsPerPage, modalCurrentPage])
 
-    const userRole = useUserRole(); 
     return (
         <>
             <NavBar></NavBar>
