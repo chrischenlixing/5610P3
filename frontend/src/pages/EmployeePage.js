@@ -323,9 +323,7 @@ function EmployeePage() {
 
             <main className="body">
                 <div class="container">
-                <h1 className="centering">
-                    <span id="h1-symbol"></span>Employee
-                </h1>
+
             
                 <form
                     id="registerShift-form"

@@ -47,4 +47,34 @@ nav {
     padding: 10px;
     border-radius: 4px;
   }
+
+  .logo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   
+  /* Style the buttons container */
+  .buttons-container {
+    display: flex;
+  }
+  
+  /* Style the navigation buttons */
+  .nav-button {
+    background-color: #6dd5ed;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-left: 10px; /* Adjust the margin as needed */
+  }
+  
+  /* Change the background color slightly when hovering over the button */
+  .nav-button:hover {
+    background-color: #2193b0;
+  }
+  
+  /* Move buttons to the right */
+  .buttons-container {
+    margin-left: auto;
+  }

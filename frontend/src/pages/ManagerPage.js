@@ -321,11 +321,6 @@ function ManagerPage() {
         <>
             <Navbar></Navbar>
 
-            <header>
-                <h1 className="centering">
-                    <span id="h1-symbol"></span>Manager
-                </h1>
-            </header>
             <main>
                 <form
                     id="Search-form"

@@ -19,35 +19,31 @@ function NavBar({ handleLogout }) {
   return (
     <nav aria-label="log out">
       <div className="aot-head">
-        <div className="logout-container">
-          <a
-            className="logout fancy-logout-button"
-            id="LogoutAction"
-            onClick={handleLogout}
-            href="/"
-          >
+        <div className="logo-container">
+          <div className="logo-text">{position === 'manager' ? 'EmoTime Manager' : 'EmoTime Employee'}</div>
+        </div>
+        <div className="buttons-container">
+          <button className="nav-button" onClick={openModal}>
+            Open Calendar
+          </button>
+          <a className="nav-button" id="LogoutAction" onClick={handleLogout} href="/">
             Logout
           </a>
         </div>
       </div>
-      <div>
-        {position === 'manager' ? 'EmoTime' : 'EmoTime'}
-      </div>
-      <button onClick={openModal}>Open Calendar</button>
 
-<Modal show={isModalOpen} onHide={closeModal}>
-  <Modal.Header closeButton>
-    <Modal.Title>Calendar</Modal.Title>
-  </Modal.Header>
-  <Modal.Body>
-    {/* Content for your modal */}
-    <Calendar />
-  </Modal.Body>
-  <Modal.Footer>
-    <button onClick={closeModal}>Close</button>
-  </Modal.Footer>
-</Modal>
-</nav>
+      <Modal show={isModalOpen} onHide={closeModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Calendar</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Calendar />
+        </Modal.Body>
+        <Modal.Footer>
+          <button onClick={closeModal}>Close</button>
+        </Modal.Footer>
+      </Modal>
+    </nav>
   );
 }
 
