@@ -11,12 +11,12 @@ function IndexPage() {
     let password = document.getElementById("password").value;
 
     if (!name || name === "") {
-      alert("Username mustn't be empty.");
+      alert("Username Shouldn't be Empty.");
       e.preventDefault();
       return false;
     }
     if (!password || password === "") {
-      alert("Password mustn't be empty.");
+      alert("Password Shouldn't be Empty.");
       e.preventDefault();
       return false;
     }

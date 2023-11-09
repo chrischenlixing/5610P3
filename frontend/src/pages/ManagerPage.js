@@ -275,21 +275,18 @@ function ManagerPage() {
         }
         console.log(obj);
         if (!obj.name || obj.name === "") {
-            alert("Name mustn't be empty");
+            alert("Name Shouldn't be Empty");
             return;
         }
         if (!obj.shift || obj.shift === "") {
-            alert("Shift mustn't be empty");
+            alert("Shift Shouldn't be Empty");
             return;
         }
         if (!obj.reviews || obj.reviews === "") {
-            alert("Review mustn't be empty");
+            alert("Review Shouldn't be Empty");
             return;
         }
-        // if (isNaN(obj.reviews) || isNaN(parseFloat(obj.reviews))) {
-        //     alert("invalid input");
-        //     return;
-        // }
+
         if (typeof obj.reviews == 'number' || Number.isFinite(obj.reviews)) {
             alert("invalid input");
             return;

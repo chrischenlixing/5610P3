@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Calendar from './MyCalendar';
 import './NavBar.css';
 import { useUserRole } from '../hooks/UseUserRole';
@@ -46,5 +47,9 @@ function NavBar({ handleLogout }) {
     </nav>
   );
 }
+
+NavBar.propTypes = {
+    handleLogout: PropTypes.func.isRequired,
+  };
 
 export default NavBar;

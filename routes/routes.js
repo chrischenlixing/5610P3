@@ -160,12 +160,10 @@ router.post('/api/clockin', async (req, res) => {
     const data = req.body;
     data.name = req.session.user.username;
 
-    if (await myDB.findOneCheckIn(data)) {
-      return;
-    }
+    await myDB.addCheckIn(data);
+    res.json({ message: 'Successfully clocked in' });
 
-    const docs = await myDB.addCheckIn(data);
-    res.json(docs);
+
   } catch (err) {
     console.error('# Get Error', err);
     res.status(500).send({ error: `${err.name}, ${err.message}` });

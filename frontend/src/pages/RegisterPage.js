@@ -11,17 +11,17 @@ function RegisterPage() {
     let position = document.getElementById("position").value;
 
     if (!name || name === "") {
-      alert("Username mustn't be empty.");
+      alert("Username Shouldn't be Empty.");
       e.preventDefault();
       return false;
     }
     if (!password || password === "") {
-      alert("Password mustn't be empty.");
+      alert("Password Shouldn't be Empty.");
       e.preventDefault();
       return false;
     }
     if (!position || position === "") {
-      alert("Position mustn't be empty.");
+      alert("Position Shouldn't be Empty.");
       e.preventDefault();
       return false;
     }

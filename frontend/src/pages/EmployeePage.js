@@ -219,35 +219,33 @@ function EmployeePage() {
         setRowsPerPage(rowPerPage);
     }
 
-    //employee check in
     const clockinfunc = (obj) => {
         obj.date = new Date().toDateString();
         fetch(checkInURL, {
-            method: 'POST',
-            body: JSON.stringify(obj),
-            headers: {
-                'Content-Type': 'application/json'
-            },
+          method: 'POST',
+          body: JSON.stringify(obj),
+          headers: {
+            'Content-Type': 'application/json'
+          },
         }).then(
-            (response) => {
-                if (response.redirected) {
-                    window.location.href = response.url;
-                } else if (!response.ok) {
-                    throw new Error();
-                } else {
-                    return response.json()
-                }
+          (response) => {
+            if (response.redirected) {
+              window.location.href = response.url;
+            } else if (!response.ok) {
+              throw new Error();
+            } else {
+              return response.json();
             }
+          }
         ).then((data) => {
-            console.log(data);
-            if (data.message) {
-                alert(data.message);
-            } 
-        }
-        ).catch((error) => {
-            console.error(error);
-        })
-    }
+          console.log(data);
+          if (data.message) {
+            alert(data.message);
+          }
+        }).catch((error) => {
+          console.error(error);
+        });
+      };
     //show check in records
     const showCheckIn = (obj) => {
         let checkInModal = new Modal(document.getElementById('checkInModal'));
@@ -333,7 +331,7 @@ function EmployeePage() {
                 >
                     <div className="form-group">
                         <label htmlFor="shiftList" className="aoe-text">
-                            Select Shift Date:
+                            Select a Shift Date:
                         </label>
                         <select className="form-select" name="shiftList" id="shiftList">
                         </select>
