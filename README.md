@@ -31,16 +31,30 @@ The goal of this project is for us applying the concepts learned by building a b
 
 ## Functionalities
 Authentications: User can choose to sign up based on role and login and logout @Lixing Chen
-Employee Page @Lixing Chen:
-Add Shifts: Add shifts based on the dates
-Display Shifts: Create a table to display all the added shifts for himself
-Delete Shifts: Delete the shift
-Manager Page @Junyi Liu:
-Search Shifts: Search shifts based on employee name/shift
-Display Shifts: Create a table to display all the shifts for all employees
-Review: Leave reviews for a specific shift
-Delete Shifts: Delete the shift
-Pagination: Display pages based on the wanted shift counts @Lixing Chen
-NavBar: Display a Navbar with role and calendar @Junyi Liu
 
+Employee Page @Lixing Chen:
+
+Add Shifts: Add shifts based on the dates
+
+Clock In: Clock in for creating a timestamp
+
+Display Shifts: Create a table to display all the added shifts for himself and see reviews
+
+Delete Shifts: Delete the shift
+
+Manager Page @Junyi Liu:
+
+Search Shifts: Search shifts based on employee name/shift
+
+Display Shifts: Create a table to display all the shifts for all employees
+
+Check Clock In: Check the clockin time for current employee
+
+Review: Leave reviews for a specific shift
+
+Delete Shifts: Delete the shift
+
+Pagination: Display pages based on the wanted shift counts @Lixing Chen
+
+NavBar: Display a Navbar with role and calendar @Junyi Liu
 
